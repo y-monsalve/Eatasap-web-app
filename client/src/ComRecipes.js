@@ -25,7 +25,7 @@ const ComRecipes = () => {
 
   const deleteRecipe = async (id) => {
     try {
-      await fetch(`${BASE_URL}/recipes/:id`, {
+      await fetch(`${BASE_URL}/recipes/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -49,6 +49,7 @@ const ComRecipes = () => {
             <ul className="recipe-ingredients">
               <li>{recipe.ingredients}</li>
             </ul>
+            <img className="recipe-img" alt={recipe.title} src={recipe.url} />
             <button onClick={() => deleteRecipe(recipe.id)}>X</button>
           </div>
         ))}

@@ -1,4 +1,5 @@
 import Recipe from "./Recipe";
+import RecipeFilter from "./RecipeFilter";
 import { useState, useEffect } from "react";
 import "./App.css";
 
@@ -50,18 +51,7 @@ const Form = () => {
           </button>
         </form>
       </div>
-      {/* <div className="filter">
-        <form>
-          <input type="checkbox" id="1" name="1" value="vegetarian">
-            <label for="vegetarian"> Vegetarian</label>
-          </input>
-
-          <input type="checkbox" id="2" name="2" value="vegan">
-            <label for="vegan"> Vegan</label>
-          </input>
-        </form>
-      </div> */}
-
+      {/* <RecipeFilter />  component not working*/}
       <div className="recipes">
         {recipes.map((recipe) => (
           <Recipe

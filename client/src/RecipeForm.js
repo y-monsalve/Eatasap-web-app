@@ -6,6 +6,7 @@ const RecipeForm = () => {
   const [recipe, setRecipe] = useState({
     title: "",
     ingredients: "",
+    url: "",
   });
 
   const [error, setError] = useState("");
@@ -64,7 +65,13 @@ const RecipeForm = () => {
             placeholder="Ingredients"
           />
         </div>
-        <input type="url" name="url" placeholder="Upload a pic"></input>
+        <input
+          onChange={handleChange}
+          type="url"
+          name="url"
+          value={recipe.url}
+          placeholder="Upload a picture of your recipe"
+        ></input>
         <br></br>
         <button type="submit">Submit</button>
       </form>
