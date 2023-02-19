@@ -8,7 +8,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100wh;
+  width: 100%;
   height: 100vh;
   background-color: darkgray;
   background: url(images/wine.jpg);
@@ -22,7 +22,7 @@ body {
 }
 
 .header a {
-  float: left;
+  /* float: left; */
   color: black;
   text-align: center;
   padding: 12px;
@@ -83,9 +83,6 @@ form {
   border-radius: 8px;
   outline: none;
   /*border: 2px solid #EAEAEA;*/
-  margin: auto;
-  width: 100%;
-  text-align: center;
 }
 
 label {
@@ -97,12 +94,22 @@ label {
 input,
 textarea {
   justify-content: center;
-  width: 60%;
+  width: auto;
   border: 1px solid #000000;
   object-position: center;
   border-radius: 8px;
+  width: 250px;
 }
-
+/* .flex-container {
+  display: flex;
+  width: 50%;
+} */
+.checkbox {
+  /* display: inline-flex; */
+  display: inline-table;
+  margin: auto;
+  border: none;
+}
 .recipe-tab {
   padding: 14px 14px;
   border-radius: 8px;

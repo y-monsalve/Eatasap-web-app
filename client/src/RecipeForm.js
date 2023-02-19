@@ -65,15 +65,15 @@ const RecipeForm = () => {
             placeholder="Ingredients"
           />
         </div>
-        {/* <div className="input-item"> */}
-        <input
-          onChange={handleChange}
-          type="url"
-          name="url"
-          value={recipe.url}
-          placeholder="Upload a picture of your recipe"
-        ></input>
-        {/* </div> */}
+        <div className="input-item">
+          <input
+            onChange={handleChange}
+            type="url"
+            name="url"
+            value={recipe.url}
+            placeholder="Upload a picture of your recipe"
+          ></input>
+        </div>
         <br></br>
 
         <button type="submit">Submit</button>
