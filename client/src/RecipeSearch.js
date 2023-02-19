@@ -1,12 +1,11 @@
 import Recipe from "./Recipe";
-import RecipeFilter from "./RecipeFilter";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 const Form = () => {
   const APP_ID = "5de39993";
   const APP_KEY = "e9ea68aa381f308697b567385ff3868e";
-
+  const [checked, setChecked] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
@@ -34,6 +33,10 @@ const Form = () => {
     setSearch("");
   };
 
+  const handleCheck = () => {
+    setChecked(!checked);
+  };
+
   return (
     <div>
       <div className="recipe-search">
@@ -46,12 +49,27 @@ const Form = () => {
           />
 
           <br></br>
+          <div className="input-item">
+            <label for="vegetarianRecipes">
+              Vegetarian
+              <input
+                type="checkbox"
+                id="vegetarianRecipes"
+                name="filterRecipe"
+                value="vegetarian"
+                checked={checked}
+                onChange={handleCheck}
+              />
+            </label>
+            <br></br>
+            <p>Is "My Value" checked? {checked.toString()}</p>
+          </div>
           <button className="submit" type="submit">
             Search
           </button>
         </form>
       </div>
-      {/* <RecipeFilter />  component not working*/}
+
       <div className="recipes">
         {recipes.map((recipe) => (
           <Recipe
