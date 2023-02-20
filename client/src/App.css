@@ -110,6 +110,7 @@ textarea {
   margin: auto;
   border: none;
 }
+
 .recipe-tab {
   padding: 14px 14px;
   border-radius: 8px;
@@ -153,4 +154,8 @@ img {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+
+.recipe-image {
+  max-width: 300px;
 }

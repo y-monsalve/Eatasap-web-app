@@ -9,16 +9,21 @@ const Form = () => {
   const [query, setQuery] = useState("");
   const [recipes, setRecipes] = useState([]);
   const [checked, setChecked] = useState(false);
-  const [isVegRecipe, setIsVegRecipe] = useState([]);
+  //  const [health, setHealth] = useState ("") for using a radius
 
   useEffect(() => {
     getRecipes();
-  }, [query]);
+  }, [query, checked]);
+  //no array of dependencies if you want to search the filtered recipes after clicking on search
+  //add setSearch in getSearch to look for filtered recipes
 
   //Fetch request
   const getRecipes = async () => {
     const response = await fetch(
-      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
+      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}${
+        checked ? "&health=vegetarian" : ""
+      }`
+      // ${checked ?"&health=vegan":""} for using a radius
     );
     const data = await response.json();
     setRecipes(data.hits);
@@ -37,26 +42,6 @@ const Form = () => {
   const handleCheck = () => {
     setChecked(!checked);
   };
-
-  const filterVegRecipes = async () => {
-    const response = await fetch(
-      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}${
-        isVegRecipe ? "&health=vegetarian" : ""
-      }`
-    );
-    const data = await response.json();
-    setIsVegRecipe(data.hits);
-  };
-  //  const filterVegRecipes = async (recipe) => {
-  //  const //set searched query
-  //     const response = await fetch(
-  //       `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}${
-  //         isVegRecipes ? "&health=vegetarian" : ""
-  //       }`
-  //     );
-  //     const data = await response.json();
-  //     setIsVegRecipes(data);
-  //   };
 
   return (
     <div>
@@ -79,7 +64,7 @@ const Form = () => {
                   value="vegetarian"
                   aria-label="checkbox-vegeterian-recipes"
                   checked={checked}
-                  onChange={(handleCheck, filterVegRecipes)}
+                  onChange={handleCheck}
                 />
               </label>
             </div>
@@ -99,7 +84,7 @@ const Form = () => {
           </div>
 
           <br></br>
-          <p>Is "My Value" checked? {checked.toString()}</p>
+          {/* <p>Is "My Value" checked? {checked.toString()}</p> */}
 
           <button className="submit" type="submit">
             Search
